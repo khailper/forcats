@@ -18,6 +18,8 @@ test_that("counts NA even when not in levels", {
 test_that("sort = TRUE brings most frequent values to top", {
   f <- factor(c("a", "b", "b"))
   out <- fct_count(f, sort = TRUE)
+  out_2 <- fct_count(f, sort = TRUE, prop = TRUE)
 
   expect_equal(out$f, factor(c("b", "a"), levels = c("a", "b")))
+  expect_equal(out_2$f, factor(c("b", "a"), levels = c("a", "b")))
 })
