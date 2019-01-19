@@ -3,13 +3,17 @@
 #' @param f A factor (or character vector).
 #' @param sort If `TRUE`, sort the result so that the most common values
 #'   float to the top.
-#' @return A tibble with columns `f` and `n`.
+#' @param prop If `TRUE`, creates a tibble with each factor's fraction of the
+#' total count
+#' @return A tibble with columns `f` and `n`. If `prop = TRUE`, columns are
+#' `f` and `prop`
 #' @export
 #' @examples
 #' f <- factor(sample(letters)[rpois(1000, 10)])
 #' table(f)
 #' fct_count(f)
 #' fct_count(f, sort = TRUE)
+#' fct_count(f, prop = TRUE)
 fct_count <- function(f, sort = FALSE, prop = FALSE) {
   f <- check_factor(f)
   f2 <- addNA(f, ifany = TRUE)
